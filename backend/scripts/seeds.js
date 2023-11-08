@@ -1,12 +1,13 @@
 //TODO: seeds script should come here, so we'll be able to put some data in our local env
 
+require("dotenv").config();
 const mongoose = require('mongoose');
 const faker = require('faker');
 const User = require('./models/User');
 const Item = require('./models/Item');
 const Comment = require('./models/Comment');
 
-mongoose.connect('mongodb://localhost:27017/myDatabase', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.MONGODB_URI);
 
 async function seedDB() {
     for(let i = 0; i < 100; i++) {
